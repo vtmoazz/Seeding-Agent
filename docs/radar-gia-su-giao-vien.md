@@ -90,10 +90,16 @@ Mỗi dòng một chủ đề: `ngày | nguồn/nhóm | trụ cột | câu hỏi
 
 Chấm điểm bổ sung (mục 4): thêm tiêu chí **Phân khúc** 0-5 (tín hiệu trường tư/quốc tế/song ngữ, học phí cao, yêu cầu gia sư chất lượng). Tổng thành 25, ngưỡng tạo bài là 18.
 
-## 9. muse2api: chưa tích hợp, chờ xác nhận
+## 9. Muse tự quét Facebook (đính chính)
 
-Đã đọc https://github.com/www222fff/muse2api (v0.1, chính tác giả ghi "chưa chạy test, chưa thử với tài khoản thật"):
+Muse (app trên máy người dùng) tự quét bài đăng Facebook ở chế độ chỉ đọc, không tương tác, có lịch lặp ("Hàng ngày") và báo kết quả trong chat, kèm ghép cặp cầu-cung. Đã chạy lượt Đà Nẵng và đang mở rộng TP.HCM.
 
-- Nó là cổng chuyển giao diện web muse.ai thành API kiểu OpenAI, chạy bằng Chromium và cookie đăng nhập (`hatch_sess`...) của tài khoản. Tác giả ghi chỉ để nghiên cứu và phải tuân thủ điều khoản của muse.ai.
-- Nó chỉ trò chuyện/tạo ảnh/video, không tự quét Facebook. Dữ liệu Page/group phải do nguồn khác đưa vào.
-- Cần một tiến trình chạy thường trực và cookie tài khoản; session cloud thì tạm thời. Cookie là thông tin đăng nhập, không được dán vào chat hay commit.
+- **muse2api không dùng**: đó là cổng cho muse.ai, một dịch vụ khác với Muse này. Bỏ khỏi kế hoạch.
+- **Vai trò**: Muse quét và ghép cặp; Claude nhận kết quả, chấm điểm (mục 4), soạn bài. Claude không quét Facebook.
+- **Bàn giao**: kết quả Muse nằm trong chat trên máy người dùng. Để Claude đọc được, dán hoặc xuất vào Doc "Radar" trong Drive (mục 7). Chưa có kênh tự động.
+- **Hạn chế đã thấy**: tìm "IB" bị Facebook trả cả chữ "ib" (inbox); giáo viên chương trình quốc tế ít quảng cáo trên group công khai, nguồn chính là online/toàn quốc.
+- **Lịch**: Muse chỉ chạy khi app mở trên máy. Cần giữ máy bật vào 07:00, 13:00, 20:30.
+
+### Lệnh gợi ý dán vào Muse
+
+> Quét toàn quốc, chỉ đọc, 3 lần/ngày (07:00, 13:00, 20:30) trên tất cả Page và group. Tìm bài nhu cầu thuê gia sư và bài giáo viên/gia sư tìm học viên. Ưu tiên phụ huynh trường quốc tế/trường tư, chương trình Cambridge/IGCSE/Edexcel/IB. Loại bài có học phí dưới 150.000 đồng/buổi hoặc dưới 1.000.000 đồng/tháng; bài không nêu giá thì giữ lại và ghi "chưa rõ giá". Bỏ qua bài đã báo. Mỗi lượt xuất bảng: ngày | nguồn/group | trụ cột | nhu cầu | học phí | link.
