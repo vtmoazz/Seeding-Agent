@@ -1,6 +1,6 @@
 # Radar nội dung: kết nối gia sư và giáo viên
 
-Trạng thái: đề xuất v0.1, 2026-10-15. Chờ người dùng xác nhận mục 6 trước khi tạo Routine.
+Trạng thái: v0.2, 2026-10-15. Đã có quyết định ở mục 8; mục 6 và mục 9 còn chờ xác nhận trước khi tạo Routine.
 
 ## 1. Mục tiêu
 
@@ -75,3 +75,25 @@ Lý do chọn giờ:
 ## 7. Định dạng Doc "Radar" Muse AI trả về (đề xuất)
 
 Mỗi dòng một chủ đề: `ngày | nguồn/nhóm | trụ cột | câu hỏi hoặc từ khoá gốc | số lần xuất hiện | link`. Claude đọc, chấm điểm theo mục 4, rồi ghi kết quả vào mục "Đã chọn / Danh sách chờ / Loại" cuối cùng cùng Doc.
+
+## 8. Quyết định của người dùng (2026-10-15)
+
+- **Nguồn quét**: tất cả Page và group đang quản lý (vẫn không tự đăng comment trong group).
+- **Mật độ**: 3 lần/ngày, thay cho bảng ở mục 5. Đề xuất giờ: 07:00, 13:00, 20:30 (UTC+7). Mỗi lần là loại "Nhanh"; quét "Sâu" tuần một lần gộp vào lần 07:00 thứ Hai.
+- **Địa bàn**: toàn quốc.
+- **Phân khúc ưu tiên**: cao cấp, hoặc con học trường tư.
+- **Muse AI**: gói cơ bản.
+- **Bộ lọc giá (loại bỏ)**:
+  - học phí dưới 150.000 đồng/buổi;
+  - học phí dưới 1.000.000 đồng/tháng.
+  Bài không nêu học phí thì không loại, chỉ giảm điểm "phân khúc" và ghi "chưa rõ giá".
+
+Chấm điểm bổ sung (mục 4): thêm tiêu chí **Phân khúc** 0-5 (tín hiệu trường tư/quốc tế/song ngữ, học phí cao, yêu cầu gia sư chất lượng). Tổng thành 25, ngưỡng tạo bài là 18.
+
+## 9. muse2api: chưa tích hợp, chờ xác nhận
+
+Đã đọc https://github.com/www222fff/muse2api (v0.1, chính tác giả ghi "chưa chạy test, chưa thử với tài khoản thật"):
+
+- Nó là cổng chuyển giao diện web muse.ai thành API kiểu OpenAI, chạy bằng Chromium và cookie đăng nhập (`hatch_sess`...) của tài khoản. Tác giả ghi chỉ để nghiên cứu và phải tuân thủ điều khoản của muse.ai.
+- Nó chỉ trò chuyện/tạo ảnh/video, không tự quét Facebook. Dữ liệu Page/group phải do nguồn khác đưa vào.
+- Cần một tiến trình chạy thường trực và cookie tài khoản; session cloud thì tạm thời. Cookie là thông tin đăng nhập, không được dán vào chat hay commit.
